@@ -27,3 +27,6 @@ javascript: [].find.call(document.querySelectorAll("video"),v=>!v.paused).volume
 
 // increase the volume
 javascript: [].find.call(document.querySelectorAll("video"),v=>!v.paused).volume/=0.7
+
+// like and comment youtube video
+javascript: function pollfun(){return console.log("pollfun "+count),commentBox=document.querySelector(commentBoxSelector),!commentBox&&count++<maxTries?void setTimeout(pollfun,500):(count<maxTries?(console.log("adding comment"),addComment(commentBox)):alert("Could not access comment box"),likeButton.click(),void scrollTo(0,0))}function addComment(a){a.click();var a=document.querySelector(commentBoxSelector2);a.innerHTML="I like this.";var b=document.querySelector("Button[aria-label='Comment']");b.disabled=!1,b.click()}scrollTo(0,1e3);var count=0,maxTries=10,commentBoxSelector="div[data-placeholder='Add a public comment...']",commentBoxSelector2="div[contenteditable='plaintext-only'][data-placeholder='Add a public comment...']",likeButton=document.querySelector("Button[title='I like this']");pollfun();
